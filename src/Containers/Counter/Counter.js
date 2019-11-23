@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Counter.css';
 import {connect} from "react-redux";
 import {fetchCounter, modifyCounterBy, postCounter} from "../../store/actions";
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 class Counter extends Component {
     componentDidMount() {
@@ -15,6 +16,10 @@ class Counter extends Component {
     }
 
     render() {
+        if (this.props.loading) {
+            return <Spinner/>
+        }
+
         let number = 5;
         return (
             <div className="Counter">
@@ -30,7 +35,8 @@ class Counter extends Component {
 
 const mapStateToProps = state => {
     return {
-        counter: state.counter
+        counter: state.counter,
+        loading: state.loading
     };
 };
 const mapDispatchToProps = dispatch => {

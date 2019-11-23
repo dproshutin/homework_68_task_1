@@ -48,7 +48,6 @@ export const postCounter = () => {
     return (dispatch, getState) => {
         dispatch(postCounterRequest());
         const {counter} = getState();
-        console.log(counter);
         axios.put("/task1/counter.json", counter).then(response => {
             dispatch(postCounterSuccess(counter));
         }, err => {

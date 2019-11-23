@@ -22,8 +22,9 @@ const reducer = (state = initialState, action) => {
         case POST_COUNTER_REQUEST:
             return {...state, loading: true};
         case FETCH_COUNTER_SUCCESS:
-        case POST_COUNTER_SUCCESS:
             return {...state, loading: false, counter: action.counter};
+        case POST_COUNTER_SUCCESS:
+            return {...state, loading: false};
         case FETCH_COUNTER_ERROR:
         case POST_COUNTER_ERROR:
             return {...state, loading: false, error: action.error};
